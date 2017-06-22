@@ -369,21 +369,18 @@ $daterangepicker-ranges-active-border-radius: $daterangepicker-border-radius !de
   }
 
   select {
-    &.monthselect, &.yearselect {
-      font-size: 12px;
-      padding: 1px;
-      height: auto;
-      margin: 0;
-      cursor: default;
+    &.form-control {
+      display: inline;
+      padding: 5px;
     }
 
     &.monthselect {
       margin-right: 2%;
-      width: 56%;
+      width: 50%;
     }
 
     &.yearselect {
-      width: 40%;
+      width: 45%;
     }
 
     &.hourselect, &.minuteselect, &.secondselect, &.ampmselect {

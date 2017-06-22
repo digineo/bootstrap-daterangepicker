@@ -130,17 +130,14 @@
     color: #999;
     cursor: not-allowed;
     text-decoration: line-through; }
-  .daterangepicker select.monthselect, .daterangepicker select.yearselect {
-    font-size: 12px;
-    padding: 1px;
-    height: auto;
-    margin: 0;
-    cursor: default; }
+  .daterangepicker select.form-control {
+    display: inline;
+    padding: 5px; }
   .daterangepicker select.monthselect {
     margin-right: 2%;
-    width: 56%; }
+    width: 50%; }
   .daterangepicker select.yearselect {
-    width: 40%; }
+    width: 45%; }
   .daterangepicker select.hourselect, .daterangepicker select.minuteselect, .daterangepicker select.secondselect, .daterangepicker select.ampmselect {
     width: 50px;
     margin-bottom: 0; }
