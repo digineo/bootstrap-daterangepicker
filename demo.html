@@ -89,6 +89,12 @@
 
               <div class="checkbox">
                 <label>
+                  <input type="checkbox" id="disableInputHover"> disableInputHover
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
                   <input type="checkbox" id="timePicker"> timePicker
                 </label>
               </div>
@@ -271,6 +277,9 @@
 
           if ($('#showISOWeekNumbers').is(':checked'))
             options.showISOWeekNumbers = true;
+
+          if ($('#disableInputHover').is(':checked'))
+            options.disableInputHover = true;
 
           if ($('#timePicker').is(':checked'))
             options.timePicker = true;
