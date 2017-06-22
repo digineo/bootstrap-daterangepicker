@@ -99,10 +99,10 @@
 
         // html template for the picker UI
         if (typeof options.template !== 'string' && !(options.template instanceof $))
-            options.template = '<div class="daterangepicker dropdown-menu">' +
+            options.template = '<div class="daterangepicker dropdown-menu" tabindex="0">' +
                 '<div class="calendar left">' +
                     '<div class="daterangepicker_input">' +
-                        '<input class="input-mini form-control" type="text" name="daterangepicker_start" value="" />' +
+                        '<input class="input-mini form-control" type="text" name="daterangepicker_start" value="" tabindex="1" />' +
                         '<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>' +
                         '<div class="calendar-time">' +
                             '<div></div>' +
@@ -113,7 +113,7 @@
                 '</div>' +
                 '<div class="calendar right">' +
                     '<div class="daterangepicker_input">' +
-                        '<input class="input-mini form-control" type="text" name="daterangepicker_end" value="" />' +
+                        '<input class="input-mini form-control" type="text" name="daterangepicker_end" value="" tabindex="2" />' +
                         '<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>' +
                         '<div class="calendar-time">' +
                             '<div></div>' +
@@ -124,8 +124,8 @@
                 '</div>' +
                 '<div class="ranges">' +
                     '<div class="range_inputs">' +
-                        '<button class="applyBtn" disabled="disabled" type="button"></button> ' +
-                        '<button class="cancelBtn" type="button"></button>' +
+                        '<button class="applyBtn" disabled="disabled" type="button" tabindex="3"></button> ' +
+                        '<button class="cancelBtn" type="button" tabindex="4"></button>' +
                     '</div>' +
                 '</div>' +
             '</div>';
