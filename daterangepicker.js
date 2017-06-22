@@ -851,9 +851,11 @@
                         classes.push('in-range');
 
                     // don't allow selection if the date is before the minimum end date
-                    if (minEndDate && calendar[row][col].isBefore(minEndDate, 'day') &&
-                        classes.indexOf('start-date') < 0) {
-                        classes.push('off', 'disabled');
+                    if (minEndDate && calendar[row][col].isBefore(minEndDate, 'day')) {
+                        if (classes.indexOf('start-date') < 0)
+                            classes.push('off', 'disabled');
+                        if (this.startDate && calendar[row][col].isAfter(this.startDate, 'day'))
+                            classes.push('limited');
                     }
 
                     // apply custom classes for this date

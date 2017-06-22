@@ -38,6 +38,10 @@ $daterangepicker-active-color:               #fff !default;
 $daterangepicker-active-bg-color:            #357ebd !default;
 $daterangepicker-active-border-color:        transparent !default;
 
+$daterangepicker-in-limited-range-color:        $daterangepicker-in-range-color !default;
+$daterangepicker-in-limited-range-border-color: $daterangepicker-in-range-border-color !default;
+$daterangepicker-in-limited-range-bg-color:     $daterangepicker-in-range-bg-color !default;
+
 $daterangepicker-unselected-color:           #999 !default;
 $daterangepicker-unselected-border-color:    transparent !default;
 $daterangepicker-unselected-bg-color:        #fff !default;
@@ -334,6 +338,15 @@ $daterangepicker-ranges-active-border-radius: $daterangepicker-border-radius !de
         background-color: $daterangepicker-active-bg-color;
         border-color: $daterangepicker-active-border-color;
         color: $daterangepicker-active-color;
+      }
+    }
+
+    &.limited {
+      &, &.in-range, &.disabled {
+        background-color: $daterangepicker-in-limited-range-bg-color;
+        border-color: $daterangepicker-in-limited-range-border-color;
+        color: $daterangepicker-in-limited-range-color;
+        text-decoration: none
       }
     }
   }
