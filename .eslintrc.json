@@ -19,6 +19,11 @@
         "no-unreachable": "warn",
         "no-unused-vars": "warn",
         "constructor-super": "warn",
-        "valid-typeof": "warn"
+        "valid-typeof": "warn",
+        "spaced-comment": ["error", "always"],
+        "space-before-function-paren": ["error", "never"],
+        "keyword-spacing": ["error", { "before": true, "after": true }],
+        "strict": ["error", "function"],
+        "padded-blocks": ["error", "never"]
     }
 }
