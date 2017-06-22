@@ -504,6 +504,8 @@
                     this.startDate.minute(Math.floor(this.startDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
             }
 
+            this.element.trigger("selectedStartDate.daterangepicker", this);
+
             if (!this.isShowing)
                 this.updateElement();
 
@@ -536,6 +538,8 @@
                 this.endDate = this.startDate.clone().add(this.dateLimitMin);
 
             this.previousRightTime = this.endDate.clone();
+
+            this.element.trigger("selectedStartDate.daterangepicker", this);
 
             if (!this.isShowing)
                 this.updateElement();
