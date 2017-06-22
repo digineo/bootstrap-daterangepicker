@@ -101,23 +101,23 @@
             options.template = '<div class="daterangepicker dropdown-menu">' +
                 '<div class="calendar left">' +
                     '<div class="daterangepicker_input">' +
-                      '<input class="input-mini form-control" type="text" name="daterangepicker_start" value="" />' +
-                      '<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>' +
-                      '<div class="calendar-time">' +
-                        '<div></div>' +
-                        '<i class="fa fa-clock-o glyphicon glyphicon-time"></i>' +
-                      '</div>' +
+                        '<input class="input-mini form-control" type="text" name="daterangepicker_start" value="" />' +
+                        '<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>' +
+                        '<div class="calendar-time">' +
+                            '<div></div>' +
+                            '<i class="fa fa-clock-o glyphicon glyphicon-time"></i>' +
+                        '</div>' +
                     '</div>' +
                     '<div class="calendar-table"></div>' +
                 '</div>' +
                 '<div class="calendar right">' +
                     '<div class="daterangepicker_input">' +
-                      '<input class="input-mini form-control" type="text" name="daterangepicker_end" value="" />' +
-                      '<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>' +
-                      '<div class="calendar-time">' +
-                        '<div></div>' +
-                        '<i class="fa fa-clock-o glyphicon glyphicon-time"></i>' +
-                      '</div>' +
+                        '<input class="input-mini form-control" type="text" name="daterangepicker_end" value="" />' +
+                        '<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>' +
+                        '<div class="calendar-time">' +
+                            '<div></div>' +
+                            '<i class="fa fa-clock-o glyphicon glyphicon-time"></i>' +
+                        '</div>' +
                     '</div>' +
                     '<div class="calendar-table"></div>' +
                 '</div>' +
@@ -151,19 +151,19 @@
                 this.locale.daysOfWeek = options.locale.daysOfWeek.slice();
 
             if (typeof options.locale.monthNames === 'object')
-              this.locale.monthNames = options.locale.monthNames.slice();
+                this.locale.monthNames = options.locale.monthNames.slice();
 
             if (typeof options.locale.firstDay === 'number')
-              this.locale.firstDay = options.locale.firstDay;
+                this.locale.firstDay = options.locale.firstDay;
 
             if (typeof options.locale.applyLabel === 'string')
-              this.locale.applyLabel = options.locale.applyLabel;
+                this.locale.applyLabel = options.locale.applyLabel;
 
             if (typeof options.locale.cancelLabel === 'string')
-              this.locale.cancelLabel = options.locale.cancelLabel;
+                this.locale.cancelLabel = options.locale.cancelLabel;
 
             if (typeof options.locale.weekLabel === 'string')
-              this.locale.weekLabel = options.locale.weekLabel;
+                this.locale.weekLabel = options.locale.weekLabel;
 
             if (typeof options.locale.customRangeLabel === 'string'){
                 //Support unicode chars in the custom range name.
@@ -342,16 +342,16 @@
                 // if dateLimitMin is set, set the length to the minimum
                 // note that this could conflict with maxDate
                 if (this.dateLimitMin) {
-                    var minEndDate = moment(startDate).add(this.dateLimitMin);
-                    if (endDate.isBefore(minEndDate)) {
-                        endDate = minEndDate.clone();
+                    var minEndDate = moment(this.startDate).add(this.dateLimitMin);
+                    if (this.endDate.isBefore(minEndDate)) {
+                        this.endDate = minEndDate.clone();
                     }
                 }
 
                 // If the end of the range is before the minimum or the start of the range is
                 // after the maximum, don't display this range option at all.
                 if ((this.minDate && end.isBefore(this.minDate, this.timepicker ? 'minute' : 'day'))
-                  || (maxDate && start.isAfter(maxDate, this.timepicker ? 'minute' : 'day')))
+                    || (maxDate && start.isAfter(maxDate, this.timepicker ? 'minute' : 'day')))
                     continue;
 
                 //Support unicode chars in the range names.
@@ -414,7 +414,7 @@
 
         //swap the position of the predefined ranges if opens right
         if (typeof options.ranges !== 'undefined' && this.opens == 'right') {
-            this.container.find('.ranges').prependTo( this.container.find('.calendar.left').parent() );
+            this.container.find('.ranges').prependTo(this.container.find('.calendar.left').parent());
         }
 
         //apply CSS classes and labels to buttons
@@ -443,7 +443,7 @@
             .on('blur.daterangepicker', '.daterangepicker_input input', $.proxy(this.formInputsBlurred, this))
             .on('change.daterangepicker', '.daterangepicker_input input', $.proxy(this.formInputsChanged, this));
 
-        if (! this.disableInputHover)
+        if (!this.disableInputHover)
             this.container.find('.calendar').on('mouseenter.daterangepicker', 'td.available:not(.other-month)', $.proxy(this.hoverDate, this))
 
         this.container.find('.ranges')
@@ -584,7 +584,7 @@
                     (this.startDate.format('YYYY-MM') == this.leftCalendar.month.format('YYYY-MM') || this.startDate.format('YYYY-MM') == this.rightCalendar.month.format('YYYY-MM'))
                     &&
                     (this.endDate.format('YYYY-MM') == this.leftCalendar.month.format('YYYY-MM') || this.endDate.format('YYYY-MM') == this.rightCalendar.month.format('YYYY-MM'))
-                    ) {
+                ) {
                     return;
                 }
 
@@ -602,8 +602,8 @@
                 }
             }
             if (this.maxDate && this.linkedCalendars && !this.singleDatePicker && this.rightCalendar.month > this.maxDate) {
-              this.rightCalendar.month = this.maxDate.clone().date(2);
-              this.leftCalendar.month = this.maxDate.clone().date(2).subtract(1, 'month');
+                this.rightCalendar.month = this.maxDate.clone().date(2);
+                this.leftCalendar.month = this.maxDate.clone().date(2).subtract(1, 'month');
             }
         },
 
@@ -719,7 +719,6 @@
 
             var minDate = side == 'left' ? this.minDate : this.startDate;
             var maxDate = this.maxDate;
-            var selected = side == 'left' ? this.startDate : this.endDate;
             var arrow = this.locale.direction == 'ltr' ? {left: 'chevron-left', right: 'chevron-right'} : {left: 'chevron-right', right: 'chevron-left'};
 
             var html = '<table class="table-condensed">';
@@ -881,8 +880,8 @@
                         cname += 'available';
 
                     var attributes = [
-                      'class="' + cname.replace(/^\s+|\s+$/g, '') + '"',
-                      'data-title="' + 'r' + row + 'c' + col + '"',
+                        'class="' + cname.replace(/^\s+|\s+$/g, '') + '"',
+                        'data-title="' + 'r' + row + 'c' + col + '"',
                     ];
                     if (this.disableInputHover)
                         attributes.push('title="' + calendar[row][col].format(this.locale.format) + '"');
@@ -1137,7 +1136,7 @@
             }
         },
 
-        show: function(e) {
+        show: function(/* event */) {
             if (this.isShowing) return;
 
             // Create a click proxy that is private to this instance of datepicker, for unbinding
@@ -1145,13 +1144,13 @@
 
             // Bind global datepicker mousedown for hiding and
             $(document)
-              .on('mousedown.daterangepicker', this._outsideClickProxy)
-              // also support mobile devices
-              .on('touchend.daterangepicker', this._outsideClickProxy)
-              // also explicitly play nice with Bootstrap dropdowns, which stopPropagation when clicking them
-              .on('click.daterangepicker', '[data-toggle=dropdown]', this._outsideClickProxy)
-              // and also close when focus changes to outside the picker (eg. tabbing between controls)
-              .on('focusin.daterangepicker', this._outsideClickProxy);
+                .on('mousedown.daterangepicker', this._outsideClickProxy)
+                // also support mobile devices
+                .on('touchend.daterangepicker', this._outsideClickProxy)
+                // also explicitly play nice with Bootstrap dropdowns, which stopPropagation when clicking them
+                .on('click.daterangepicker', '[data-toggle=dropdown]', this._outsideClickProxy)
+                // and also close when focus changes to outside the picker (eg. tabbing between controls)
+                .on('focusin.daterangepicker', this._outsideClickProxy);
 
             // Reposition the picker if the window is resized while it's open
             $(window).on('resize.daterangepicker', $.proxy(function(e) { this.move(e); }, this));
@@ -1167,7 +1166,7 @@
             this.isShowing = true;
         },
 
-        hide: function(e) {
+        hide: function(/* event */) {
             if (!this.isShowing) return;
 
             //incomplete date selection, revert to last values
@@ -1190,7 +1189,7 @@
             this.isShowing = false;
         },
 
-        toggle: function(e) {
+        toggle: function(/* event */) {
             if (this.isShowing) {
                 this.hide();
             } else {
@@ -1208,7 +1207,7 @@
                 target.closest(this.element).length ||
                 target.closest(this.container).length ||
                 target.closest('.calendar-table').length
-                ) return;
+            ) return;
             this.hide();
             this.element.trigger('outsideClick.daterangepicker', this);
         },
@@ -1391,8 +1390,8 @@
                 }
                 this.setEndDate(date.clone());
                 if (this.autoApply) {
-                  this.calculateChosenLabel();
-                  this.clickApply();
+                    this.calculateChosenLabel();
+                    this.clickApply();
                 }
             }
 
@@ -1439,12 +1438,12 @@
             }
         },
 
-        clickApply: function(e) {
+        clickApply: function(/* event */) {
             this.hide();
             this.element.trigger('apply.daterangepicker', this);
         },
 
-        clickCancel: function(e) {
+        clickCancel: function(/* event */) {
             this.startDate = this.oldStartDate;
             this.endDate = this.oldEndDate;
             this.hide();
@@ -1585,8 +1584,8 @@
 
         },
 
-        formInputsBlurred: function(e) {
 
+        formInputsBlurred: function(/* event */) {
             // this function has one purpose right now: if you tab from the first
             // text input to the second in the UI, the endDate is nulled so that
             // you can click another, but if you tab out without clicking anything
