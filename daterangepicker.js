@@ -1620,6 +1620,7 @@
     };
 
     $.fn.daterangepicker = function(options, callback) {
+        options = $.extend(true, {}, $.fn.daterangepicker.defaultOptions, options)
         this.each(function() {
             var el = $(this);
             if (el.data('daterangepicker'))
@@ -1628,6 +1629,8 @@
         });
         return this;
     };
+
+    $.fn.daterangepicker.defaultOptions = {};
 
     return DateRangePicker;
 }));
