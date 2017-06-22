@@ -42,6 +42,10 @@ $daterangepicker-unselected-color:           #999 !default;
 $daterangepicker-unselected-border-color:    transparent !default;
 $daterangepicker-unselected-bg-color:        #fff !default;
 
+$daterangepicker-other-month-color:          #ccc !default;
+$daterangepicker-other-month-border-color:   transparent !default;
+$daterangepicker-other-month-bg-color:       #fff !default;
+
 //
 // daterangepicker
 $daterangepicker-width:          278px !default;
@@ -293,6 +297,12 @@ $daterangepicker-ranges-active-border-radius: $daterangepicker-border-radius !de
         background-color: $daterangepicker-unselected-bg-color;
         border-color: $daterangepicker-unselected-border-color;
         color: $daterangepicker-unselected-color;
+      }
+
+      &.other-month {
+        background-color: $daterangepicker-other-month-bg-color;
+        border-color: $daterangepicker-other-month-border-color;
+        color: $daterangepicker-other-month-color;
       }
     }
 
