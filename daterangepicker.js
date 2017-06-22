@@ -1,9 +1,10 @@
 /**
-* @version: 2.1.25
+* @version: custom (based on b10a2b9, 2.1.25+)
 * @author: Dan Grossman http://www.dangrossman.info/
 * @copyright: Copyright (c) 2012-2017 Dan Grossman. All rights reserved.
 * @license: Licensed under the MIT license. See http://www.opensource.org/licenses/mit-license.php
 * @website: http://www.daterangepicker.com/
+* @see https://github.com/digineo/bootstrap-daterangepicker/compare/b10a2b9...master
 */
 // Follow the UMD template https://github.com/umdjs/umd/blob/master/templates/returnExportsGlobal.js
 (function (root, factory) {
