@@ -880,7 +880,14 @@
                     if (!disabled)
                         cname += 'available';
 
-                    html += '<td class="' + cname.replace(/^\s+|\s+$/g, '') + '" data-title="' + 'r' + row + 'c' + col + '">' + calendar[row][col].date() + '</td>';
+                    var attributes = [
+                      'class="' + cname.replace(/^\s+|\s+$/g, '') + '"',
+                      'data-title="' + 'r' + row + 'c' + col + '"',
+                    ];
+                    if (this.disableInputHover)
+                        attributes.push('title="' + calendar[row][col].format(this.locale.format) + '"');
+
+                    html += '<td ' + attributes.join(" ") + '>' + calendar[row][col].date() + '</td>';
 
                 }
                 html += '</tr>';
