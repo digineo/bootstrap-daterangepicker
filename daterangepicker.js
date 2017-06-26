@@ -539,7 +539,7 @@
 
             this.previousRightTime = this.endDate.clone();
 
-            this.element.trigger("selectedStartDate.daterangepicker", this);
+            this.element.trigger("selectedEndDate.daterangepicker", this);
 
             if (!this.isShowing)
                 this.updateElement();

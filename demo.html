@@ -27,6 +27,10 @@
       top: auto;
       cursor: pointer;
     }
+
+    #config-text {
+      font: smaller monospace;
+    }
   </style>
 </head>
 
@@ -280,21 +284,40 @@
       if ($('#cancelClass').val().length && $('#cancelClass').val() != 'btn-default')
         options.cancelClass = $('#cancelClass').val();
 
-      $('#config-text').val("$('#demo').daterangepicker(" + JSON.stringify(options, null, '    ') + ", function(start, end, label) {\n  console.log(\"New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')\");\n});");
+      var configText = "$(\"#config-demo\").daterangepicker(" +
+          JSON.stringify(options, null, "  ") +
+        ", function(start, end, label) {\n" +
+        "    console.log(\"New date range selected\", {\n" +
+        "      from:  start.format(\"YYYY-MM-DD\"),\n" +
+        "      to:    end.format(\"YYYY-MM-DD\"),\n" +
+        "      label: label\n" +
+        "    });\n" +
+        "});"
+
+      $('#config-text').val(configText);
 
       var log = $(".log").empty();
       log.info = function(message) {
         $("<div>").text(message).appendTo(log)
       }
 
-      var callback = function(start, end, label) {
-        log.info('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label+ ')');
-      }
-
-      var demo = $('#config-demo').daterangepicker(options, callback);
+      var demo = $('#config-demo').daterangepicker(options, function(start, end, label) {
+        log.info("New date range selected " + JSON.stringify({
+          from:  start.format("YYYY-MM-DD"),
+          to:    end.format("YYYY-MM-DD"),
+          label: label || "undefined"
+        }));
+      });
 
       "show,showCalendar,hide,hideCalendar,outsideClick,apply,cancel,selectedEndDate,selectedStartDate".split(",").forEach(function(ev){
-        demo.on("" + ev + ".daterangepicker", function(){ log.info("received " + ev); });
+        ev = ev.split(".");
+        ev.splice(1, 0, "daterangepicker");
+        ev = ev.join(".")
+        demo.on(ev, function(e){
+          log.info("received " + ev);
+          if (ev === "select.daterangepicker.startDate")
+            debugger;
+        });
       })
     }
 
