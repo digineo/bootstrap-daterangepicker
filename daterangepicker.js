@@ -880,7 +880,8 @@
 
                     var attributes = [
                         'class="' + cname.replace(/^\s+|\s+$/g, '') + '"',
-                        'data-title="' + 'r' + row + 'c' + col + '"',
+                        'data-row="' + row + '"',
+                        'data-col="' + col + '"',
                     ];
                     if (this.disableInputHover)
                         attributes.push('title="' + calendar[row][col].format(this.locale.format) + '"');
@@ -1260,9 +1261,9 @@
             if (!$(e.target).hasClass('available')) return;
 
             // have the text inputs above calendars reflect the date being hovered over
-            var title = $(e.target).attr('data-title');
-            var row = title.substr(1, 1);
-            var col = title.substr(3, 1);
+            var data = $(e.target).data(),
+                row = data.row,
+                col = data.col;
             var cal = $(e.target).parents('.calendar');
             var date = cal.hasClass('left') ? this.leftCalendar.calendar[row][col] : this.rightCalendar.calendar[row][col];
 
@@ -1280,9 +1281,9 @@
                     // skip week numbers, only look at dates
                     if ($(el).hasClass('week')) return;
 
-                    var title = $(el).attr('data-title');
-                    var row = title.substr(1, 1);
-                    var col = title.substr(3, 1);
+                    var data = $(el).data(),
+                        row = data.row,
+                        col = data.col;
                     var cal = $(el).parents('.calendar');
                     var dt = cal.hasClass('left') ? leftCalendar.calendar[row][col] : rightCalendar.calendar[row][col];
 
@@ -1298,9 +1299,9 @@
         clickDate: function(e) {
             if (!$(e.target).hasClass('available')) return;
 
-            var title = $(e.target).attr('data-title');
-            var row = title.substr(1, 1);
-            var col = title.substr(3, 1);
+            var data = $(e.target).data(),
+                row = data.row,
+                col = data.col;
             var cal = $(e.target).parents('.calendar');
             var date = cal.hasClass('left') ? this.leftCalendar.calendar[row][col] : this.rightCalendar.calendar[row][col];
 
