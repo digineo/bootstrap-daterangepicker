@@ -24,6 +24,7 @@
         "space-before-function-paren": ["error", "never"],
         "keyword-spacing": ["error", { "before": true, "after": true }],
         "strict": ["error", "function"],
-        "padded-blocks": ["error", "never"]
+        "padded-blocks": ["error", "never"],
+        "eqeqeq": "error"
     }
 }
