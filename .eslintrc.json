@@ -25,6 +25,7 @@
         "keyword-spacing": ["error", { "before": true, "after": true }],
         "strict": ["error", "function"],
         "padded-blocks": ["error", "never"],
-        "eqeqeq": "error"
+        "eqeqeq": "error",
+        "quotes": ["error", "single"]
     }
 }
