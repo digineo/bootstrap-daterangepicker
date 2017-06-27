@@ -855,7 +855,7 @@
                     // don't allow selection if the date is before the minimum end date
                     if (minEndDate && calendar[row][col].isBefore(minEndDate, 'day')) {
                         if (classes.indexOf('start-date') < 0)
-                            classes.push('off', 'disabled');
+                            classes.push('off');
                         if (this.startDate && calendar[row][col].isAfter(this.startDate, 'day'))
                             classes.push('limited');
                     }
@@ -1084,46 +1084,23 @@
                 containerTop = this.element.offset().top - this.container.outerHeight() - parentOffset.top;
             else
                 containerTop = this.element.offset().top + this.element.outerHeight() - parentOffset.top;
-            this.container[this.drops == 'up' ? 'addClass' : 'removeClass']('dropup');
+            this.container.toggleClass('dropup', this.drops === 'up');
 
-            if (this.opens == 'left') {
-                this.container.css({
-                    top: containerTop,
-                    right: parentRightEdge - this.element.offset().left - this.element.outerWidth(),
-                    left: 'auto'
-                });
-                if (this.container.offset().left < 0) {
-                    this.container.css({
-                        right: 'auto',
-                        left: 9
-                    });
-                }
-            } else if (this.opens == 'center') {
-                this.container.css({
-                    top: containerTop,
-                    left: this.element.offset().left - parentOffset.left + this.element.outerWidth() / 2
-                            - this.container.outerWidth() / 2,
-                    right: 'auto'
-                });
-                if (this.container.offset().left < 0) {
-                    this.container.css({
-                        right: 'auto',
-                        left: 9
-                    });
-                }
-            } else {
-                this.container.css({
-                    top: containerTop,
-                    left: this.element.offset().left - parentOffset.left,
-                    right: 'auto'
-                });
-                if (this.container.offset().left + this.container.outerWidth() > $(window).width()) {
-                    this.container.css({
-                        left: 'auto',
-                        right: 0
-                    });
-                }
-            }
+            // find and apply position
+            var css = { top: containerTop, left: 'auto', right: 'auto' };
+            if (this.opens === 'left')
+                css.right = parentRightEdge - this.element.offset().left - this.element.outerWidth();
+            else if (this.opens === 'center')
+                css.left = this.element.offset().left - parentOffset.left + this.element.outerWidth() / 2 - this.container.outerWidth() / 2;
+            else
+                css.left = this.element.offset().left - parentOffset.left;
+            this.container.css(css);
+
+            // overflow detection
+            if (this.opens === 'right' && this.container.offset().left + this.container.outerWidth() > $(window).width())
+                this.container.css({ left: 'auto', right: 0 });
+            if (!this.opens === 'right' && this.container.offset().left < 0)
+                this.container.css({ left: 0, right: 'auto' });
         },
 
         show: function(/* event */) {
