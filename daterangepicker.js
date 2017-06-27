@@ -654,7 +654,7 @@
             var calendar = side == 'left' ? this.leftCalendar : this.rightCalendar;
             var month = calendar.month.month();
             var year = calendar.month.year();
-            var hour = calendar.month.hour();
+            var hour = this.timePicker ? calendar.month.hour() : 12;
             var minute = calendar.month.minute();
             var second = calendar.month.second();
             var daysInMonth = moment([year, month]).daysInMonth();
